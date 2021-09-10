@@ -1,0 +1,14 @@
+#Greenfoot properties
+#Tue Sep 07 09:41:00 CEST 2021
+class.Brick.image=brick.jpg
+mainWindow.width=850
+class.Dragon.superclass=greenfoot.Actor
+class.BrickWorld.superclass=greenfoot.World
+project.charset=UTF-8
+version=3.0.0
+world.lastInstantiated=BrickWorld
+mainWindow.y=40
+mainWindow.x=40
+class.Brick.superclass=greenfoot.Actor
+class.Dragon.image=frog.png
+mainWindow.height=600
