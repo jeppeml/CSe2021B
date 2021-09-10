@@ -1,0 +1,17 @@
+#Greenfoot properties
+#Fri Sep 10 12:06:22 CEST 2021
+class.Cactus.superclass=greenfoot.Actor
+mainWindow.width=850
+class.explosion.image=explosion.gif
+class.Rocket.superclass=SmoothMover
+class.SmoothMover.superclass=greenfoot.Actor
+class.Cactus.image=cactus.png
+project.charset=UTF-8
+version=3.0.0
+class.explosion.superclass=greenfoot.Actor
+class.Rocket.image=rocket.png
+world.lastInstantiated=PlanetCactus
+mainWindow.y=40
+mainWindow.x=40
+class.PlanetCactus.superclass=greenfoot.World
+mainWindow.height=600
