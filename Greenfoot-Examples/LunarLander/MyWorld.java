@@ -41,7 +41,7 @@ public class MyWorld extends World
         addObject(wormsLbl, 150, 100);
         spawnSurface();
         
-        for(int i=0; i<100;i++){
+        for(int i=0; i<1;i++){
             spawnShip();
         }
         

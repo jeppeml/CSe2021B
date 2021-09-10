@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ButterflyCounter extends Counter
 {
-    private Butterfly butterfly;
+    private Actor butterfly;
     
-    public ButterflyCounter(Butterfly butterfly, String prefix){
+    public ButterflyCounter(Actor butterfly, String prefix){
         super(prefix);
         this.butterfly = butterfly;
     }
@@ -21,8 +21,10 @@ public class ButterflyCounter extends Counter
      */
     public void act() 
     {
-        setLocation((butterfly.getX());
-        setY(butterfly.getY()-40);
+        if(butterfly.getWorld()==null)
+            getWorld().removeObject(this);
+        else setLocation(butterfly.getX(),butterfly.getY()-40);
+       
         // Add your action code here.
     }    
 }

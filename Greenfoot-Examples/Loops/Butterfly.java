@@ -33,7 +33,10 @@ public class Butterfly extends Actor
         }
         life = life -1;
         counter.setValue(life);
+        move(6);
+        turn(7);
         checkIfDie();
+        
         // Add your action code here.
     }    
     
