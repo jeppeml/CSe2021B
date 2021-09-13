@@ -48,6 +48,11 @@ public class MarioLikePhysicsDragon extends SmoothMover
     private GreenfootImage imgDragonLeft = new GreenfootImage("Dragon.png");
     private GreenfootImage imgDragonRight = new GreenfootImage("Dragon-right.png");
 
+    public MarioLikePhysicsDragon(){
+        super();
+        setImage(imgDragonRight);
+    }
+    
     public void act()
     {
         checkTouchGround();
