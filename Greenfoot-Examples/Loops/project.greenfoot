@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Fri Sep 10 10:28:38 CEST 2021
+#Tue Sep 14 10:38:21 CEST 2021
 target4.type=ClassTarget
 dependency3.from=Butterfly
 target3.height=50
@@ -30,6 +30,7 @@ target2.typeParameters=
 dependency3.to=ButterflyCounter
 target3.showInterface=false
 dependency4.to=Butterfly
+class.Label.superclass=greenfoot.Actor
 dependency5.to=Butterfly
 target1.showInterface=false
 package.numTargets=4

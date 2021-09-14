@@ -1,0 +1,12 @@
+#Greenfoot properties
+#Tue Sep 14 12:03:25 CEST 2021
+mainWindow.width=850
+class.Ant.image=ant.png
+class.MyWorld.superclass=greenfoot.World
+project.charset=UTF-8
+version=3.0.0
+world.lastInstantiated=MyWorld
+mainWindow.y=40
+class.Ant.superclass=greenfoot.Actor
+mainWindow.x=40
+mainWindow.height=600

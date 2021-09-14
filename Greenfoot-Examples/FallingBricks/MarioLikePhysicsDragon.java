@@ -59,6 +59,9 @@ public class MarioLikePhysicsDragon extends SmoothMover
 
         //check the keys pressed
         checkKeyPress();
+        
+        // Cap X velo
+        capVelocityAndMove();
 
         //check if the SimplerDragonCopy is on a platform and if it is,
         //manage its Y coordinate and its isInTheAir attribute
@@ -92,13 +95,6 @@ public class MarioLikePhysicsDragon extends SmoothMover
         }
         else velocityX = 0;
 
-        if(velocityX>maxVelocityX)
-            velocityX=maxVelocityX;
-
-        if(velocityX < maxVelocityX * -1)
-            velocityX = maxVelocityX * -1;
-        move(velocityX);
-
         if(Greenfoot.isKeyDown("up") ) {
             jump();
         }
@@ -106,6 +102,16 @@ public class MarioLikePhysicsDragon extends SmoothMover
         if(Greenfoot.isKeyDown("space")){
             spawnBubbles();
         }
+    }
+    
+    private void capVelocityAndMove(){
+        if(velocityX>maxVelocityX)
+            velocityX=maxVelocityX;
+
+        if(velocityX < maxVelocityX * -1)
+            velocityX = maxVelocityX * -1;
+            
+        move(velocityX);
     }
     
     private void spawnBubbles(){
