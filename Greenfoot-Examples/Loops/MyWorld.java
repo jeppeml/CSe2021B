@@ -16,12 +16,15 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        
+        super(600, 400, 1); 
+        int x = 0;
+        int y = 0;
+        addObject(new Butterfly(8000),x,y);
         
         
         
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        
         
         for(int i=0;i<butterflies.size();i++)
             butterflies.get(i).setRotation(-15*i);
