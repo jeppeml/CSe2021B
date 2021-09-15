@@ -1,12 +1,18 @@
 #Greenfoot properties
-#Tue Sep 14 12:03:25 CEST 2021
+#Tue Sep 14 14:12:36 CEST 2021
+simulation.speed=50
+class.Turd.image=barrel.png
 mainWindow.width=850
+class.Curious.superclass=SmoothMover
 class.Ant.image=ant.png
+class.SmoothMover.superclass=greenfoot.Actor
 class.MyWorld.superclass=greenfoot.World
 project.charset=UTF-8
 version=3.0.0
 world.lastInstantiated=MyWorld
 mainWindow.y=40
-class.Ant.superclass=greenfoot.Actor
+class.Ant.superclass=SmoothMover
 mainWindow.x=40
+class.Turd.superclass=SmoothMover
 mainWindow.height=600
+class.Curious.image=ladybug1.png

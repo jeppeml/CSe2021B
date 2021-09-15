@@ -11,10 +11,20 @@ public class Ant extends SmoothMover
     double xStart = 300;
     double yStart = 200;
     double r = 200; // Radius base
-    double countTicks=45; // starting angle
+    double startingAngle = 90;// starting angle
+    double countTicks=startingAngle; 
     boolean firstTime = true;
-    double velocity = 0.01; // degrees per tick
-    
+    double velocity = 1; // degrees per tick
+    double yCompared;
+
+    public Ant(double rx, double ry, double startingAngle){
+        super();
+        r = rx;
+        yCompared = ry/rx;
+        this.startingAngle = startingAngle;
+        getImage().scale(20,20);
+    }
+
     /**
      * Act - do whatever the Ant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,15 +33,20 @@ public class Ant extends SmoothMover
     {
         if(firstTime){
             firstTime = false;
-            xStart = getX() - r * Math.cos(countTicks);
-            yStart = getY() - 0.4 * r * Math.sin(countTicks);
+            xStart = getX();// + r * Math.cos(countTicks);
+            yStart = getY();// - 0.4 * r * Math.sin(countTicks);
+
         }
-        double x = xStart + r * Math.cos(countTicks);
-        double y = yStart + 0.4 * r * Math.sin(countTicks);
-        //getWorld().addObject(new Ant(), x,y);
-        countTicks+=0.01;
+        double rads = Math.toRadians(countTicks);
+        double x = xStart + r * Math.cos(rads);
+        double y = yStart + yCompared * r * Math.sin(rads);
+        countTicks+=velocity;
+
+        // Compensate for xStart and yStart is center of ellipsis
+        // Calculates correct start location for angle
+        double startRads = Math.toRadians(startingAngle);
+        setLocation(x - r * Math.cos(startRads), y- yCompared * r * Math.sin(startRads));
         
-        setLocation(x,y);
-        // Add your action code here.
+        getWorld().addObject(new Turd(30*4),getX(),getY());
     }    
 }

@@ -17,22 +17,17 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        addObject(new Ant(), getWidth()/2, getHeight()/2);
+        double minTrackHeight = 100;
+        double minTrackWidth = 180;
+        double trackDistance = 20;
+        double startingAngle = 90; // 0=east, 90 south etc.
+        int trackStartX = 300;
+        int trackStartY = 300;
         
-        
+        for(int i= 0;i<5;i++)
+        {
+            addObject(new Ant(minTrackWidth+i*trackDistance, minTrackHeight+i*trackDistance, 90), trackStartX, (int)(trackStartY+i*trackDistance));
+        }
+        addObject(new Curious(),300,200);
     }
-    
-    /*
-     * theta = 0;  // angle that will be increased each loop
-        h = 12      // x coordinate of circle center
-        k = 10      // y coordinate of circle center
-        step = 15;  // amount to add to theta each time (degrees)
-        
-        repeat until theta >= 360;
-            { x = h + r*cos(theta)
-              y = k + r*sin(theta)
-              draw a line to x,y
-              add step to theta
-            }
-     */
 }
