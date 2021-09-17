@@ -15,9 +15,9 @@ public class Curious extends SmoothMover
     public void act() 
     {
         if(Greenfoot.getMouseInfo()!=null){
-        turnTowards(Greenfoot.getMouseInfo().getX(), Greenfoot.getMouseInfo().getY());
-        getWorld().addObject(new Turd(30*10),getX(),getY());
-        move(4);
+            turnTowards(Greenfoot.getMouseInfo().getX(), Greenfoot.getMouseInfo().getY());
+            getWorld().addObject(new Turd(30*10),getX(),getY());
+            move(4);
     }
     }    
 }
