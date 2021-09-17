@@ -6,15 +6,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Horse extends Actor
+public class Horse extends SmoothMover
 {
-    private int speed;
+    private double speed;
     
     public Horse(){ // Constructor
-        speed = Greenfoot.getRandomNumber(8-4)+4;
+        speed = (Greenfoot.getRandomNumber(400)+400)/100d;
     }
     
-    public int getSpeed(){
+    public double getSpeed(){
         return speed;
     }
     

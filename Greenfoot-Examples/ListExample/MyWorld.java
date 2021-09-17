@@ -21,11 +21,11 @@ public class MyWorld extends World
             addObject(h, 50,50+100*i);
         }
         
-        int fastestSpeed = 0;
+        double fastestSpeed = 0;
         Horse fastestHorse = null;
         for(int i=0; i<stable.size();i++){
             Horse h = stable.get(i);
-            int horseSpeed = h.getSpeed();
+            double horseSpeed = h.getSpeed();
             if(horseSpeed>fastestSpeed)
             {
                 fastestHorse = h;
