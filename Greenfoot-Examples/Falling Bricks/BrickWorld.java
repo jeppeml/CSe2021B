@@ -28,6 +28,6 @@ public class BrickWorld extends World
         
     public void spawnPlayer(){
         // Spawn player 300, 360 
-        addObject(new Dragon(), 300, 360);
+        addObject(new Dragon(Size.LARGE), 300, 360);
     }
 }

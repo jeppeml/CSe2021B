@@ -8,6 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Dragon extends Actor
 {
+    
+    public Dragon(Size sizeOfDragon){
+        super();
+        if(sizeOfDragon == Size.SMALL){
+            getImage().scale(15,15);
+        }
+        else if(sizeOfDragon == Size.MEDIUM){
+            getImage().scale(50,50);
+        }
+        else if(sizeOfDragon == Size.LARGE){
+            getImage().scale(100,100);
+        }
+    }
+    
     int speed = 8;
     /**
      * Act - do whatever the Dragon wants to do. This method is called whenever
