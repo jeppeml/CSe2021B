@@ -3,6 +3,7 @@ package dk.easv;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -18,6 +19,23 @@ public class Main {
 
 
         assignments.exercise1(name);
+
+        ArrayList<CharMorse> cmList = new ArrayList<>();
+        cmList.add(new CharMorse("a", ".-"));
+        cmList.add(new CharMorse("b", ".--"));
+        cmList.add(new CharMorse(" ", ""));
+        String str = "ab b";
+        String morse = "";
+        for(int i=0;i<str.length();i++){
+            String currentChar = str.charAt(i)+"";
+            for (CharMorse cm:cmList) {
+                if (cm.getCharacter().equals(currentChar)){
+                    morse = morse + cm.getMorseCode();
+                    morse+="/";
+                }
+            }
+        }
+        System.out.println(morse);
 
     }
 }
