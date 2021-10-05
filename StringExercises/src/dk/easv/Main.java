@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -37,5 +38,16 @@ public class Main {
         }
         System.out.println(morse);
 
+        HashMap<Character, String> hm = new HashMap<>();
+        hm.put('a', ".-");
+        hm.put('e', ".");
+        hm.put('t', "-");
+
+        String drink ="tea";
+        String morseOut = "";
+        for(int i=0;i<drink.length();i++){
+            morseOut+=hm.get(drink.charAt(i));
+        }
+        System.out.println(morseOut);
     }
 }
