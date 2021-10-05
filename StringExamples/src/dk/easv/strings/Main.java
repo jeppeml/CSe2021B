@@ -13,8 +13,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("Input for exercise 7>");
         String input = sc.nextLine();
-
-        System.out.println(input.length());
+        String[] badNames = {"horse", "spores", "saddle", "hi"};
+        String[] mask = {"*****", "******", "******", "**"};
+        String output = input;
+        for (int i = 0; i < badNames.length; i++) {
+            output = output.replaceAll(badNames[i], mask[i]);
+        }
+/*
+        String output = input
+                .replaceAll("horse","*****")
+                .replaceAll("spores","******")
+                .replaceAll("saddle","******");*/
+        System.out.println(output);
     }
     public static void e6(){
         Scanner sc = new Scanner(System.in);
