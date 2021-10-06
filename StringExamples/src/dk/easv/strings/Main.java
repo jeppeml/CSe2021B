@@ -63,7 +63,7 @@ public class Main {
         masks.add(new NameMask("horse", "h****"));
         masks.add(new NameMask("spores", "s*****"));
         masks.add(new NameMask("saddle", "sa***"));
-
+        
         Scanner sc = new Scanner(System.in);
         System.out.print("Input for exercise 7>");
         String input = sc.nextLine();
