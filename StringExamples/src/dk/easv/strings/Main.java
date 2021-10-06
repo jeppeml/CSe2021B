@@ -5,9 +5,57 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+    private class MorseTranslator{
+        String orignal;
+        String morse;
+    }
+    public void sayHello(){
+        System.out.println("Hello");
+    }
 
     public static void main(String[] args) {
-	    e7();
+        int[][] ints = {{1,0,0},{0,1,0},{0,0,1}};
+        System.out.println(ints[1][1]);
+
+
+
+        Object[] objects = new Object[9];
+        objects[0] = "Hi";
+        objects[1] = 65536;
+        objects[2] = 65536.0;
+        objects[3] = new Scanner(System.in);
+
+        //int sum = ints[0] + objects[1];
+        /*
+        double d = (int)objects[0] + (double)objects[2];
+        System.out.println(d);
+        Main m = new Main();
+        m.sayHello();
+
+        double[] intArr = new double[5];
+        for (int i = 0; i < intArr.length; i++) {
+            System.out.println(i + ": " + intArr[i]);
+        }*/
+
+        /*
+        Scanner sc = new Scanner(System.in);
+        System.out.print("How many horses? >");
+        int input = Integer.parseInt(sc.nextLine());
+        String[] horses = new String[input];
+
+
+
+        for (int i = 0; i < input; i++) {
+            System.out.println("Name of horse " + i + ">");
+            horses[i] = sc.nextLine();
+        }
+
+
+
+        for (int i = 0; i < horses.length; i++) {
+            System.out.println("horse no. " + i + ": "+ horses[i]);
+        }*/
+	   // e7();
     }
     public static void e7(){
         Scanner sc = new Scanner(System.in);
