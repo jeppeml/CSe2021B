@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[][] ints = {{1,0,0},{0,1,0},{0,0,1}};
+        /*int[][] ints = {{1,0,0},{0,1,0},{0,0,1}};
         System.out.println(ints[1][1]);
 
 
@@ -25,7 +25,7 @@ public class Main {
         objects[2] = 65536.0;
         objects[3] = new Scanner(System.in);
 
-        //int sum = ints[0] + objects[1];
+        //int sum = ints[0] + objects[1];/*
         /*
         double d = (int)objects[0] + (double)objects[2];
         System.out.println(d);
@@ -55,12 +55,29 @@ public class Main {
         for (int i = 0; i < horses.length; i++) {
             System.out.println("horse no. " + i + ": "+ horses[i]);
         }*/
-	   // e7();
+	   //e7();
+        e7WithLists();
+    }
+    public static void e7WithLists(){
+        ArrayList<NameMask> masks = new ArrayList();
+        masks.add(new NameMask("horse", "h****"));
+        masks.add(new NameMask("spores", "s*****"));
+        masks.add(new NameMask("saddle", "sa***"));
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input for exercise 7>");
+        String input = sc.nextLine();
+        String output = input;
+        for (NameMask nm : masks) {
+            output = output.replaceAll(nm.getName(), nm.getMask());
+        }
+        System.out.println(output);
     }
     public static void e7(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Input for exercise 7>");
         String input = sc.nextLine();
+
         String[] badNames = {"horse", "spores", "saddle", "hi"};
         String[] mask = {"*****", "******", "******", "**"};
         String output = input;
