@@ -1,7 +1,7 @@
 package dk.easv.strings;
 
 public class Teacher extends Person{
-    private double salary;
+    double salary;
     public Teacher(String name) {
         super(name);
     }
@@ -20,5 +20,14 @@ public class Teacher extends Person{
     @Override
     public String toString() {
         return super.toString() + ", salary: " + getSalary();
+    }
+    @Override
+    public String getName() {
+        return "Cool person: " + super.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        super.name = name;
     }
 }
