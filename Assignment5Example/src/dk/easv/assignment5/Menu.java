@@ -1,5 +1,7 @@
 package dk.easv.assignment5;
 
+import java.util.Scanner;
+
 /**
  * Abstract class implementing the basic functionality of a console based
  * menu class. A menu can be created by sub-classing this class and implement
@@ -74,7 +76,17 @@ public abstract class Menu
      */
     private int getOption()
     {
-        return 0; // Dummy
+        Scanner scanner = new Scanner(System.in);
+        try{
+            String input = scanner.nextLine();
+            int intInput = Integer.parseInt(input);
+            return intInput;
+        }
+        catch(NumberFormatException e){
+            System.out.println("Not a valid number, please type in a number");
+        }
+        return 0;
+
 
     }
 
@@ -88,6 +100,10 @@ public abstract class Menu
      */
     private void showMenu()
     {
+        System.out.println(header);
+        for(int i = 0; i<menuItems.length;i++){
+            System.out.println((i+1) + ": " + menuItems[i]);
+        }
     }
 
     /**
