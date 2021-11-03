@@ -1,6 +1,6 @@
 package dk.easv.assignment5;
 
-public class Person {
+public abstract class Person {
     private int id;
     private String name;
     private String email;
@@ -28,6 +28,12 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Person compPerson = (Person) obj;
+        return compPerson.getId() == this.getId();
     }
 
     @Override
