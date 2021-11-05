@@ -32,6 +32,9 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return super.toString() + "\t\t" + getInitials() + "\t\t" + getSubjects().get(0);
+        String subjects = "";
+        if(getSubjects().size()>0)
+            subjects = getSubjects().get(0);
+        return super.toString() + "\t\t" + getInitials() + "\t\t" + subjects;
     }
 }

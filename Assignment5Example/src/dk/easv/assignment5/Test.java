@@ -3,26 +3,7 @@ package dk.easv.assignment5;
 import java.util.*;
 
 public class Test {
-    //List<Person> persons = new ArrayList<>();
-    public void runTests(){
-        PersonManager pm = new PersonManager();
-/*
-        Person piotr = new Person(666, "Piotr Stegonovski");
-        piotr.setEmail("piotr@hotmail.com");
-
-        Person pete = new Person(1, "Pete Stegga");
-        pete.setEmail("pete44@hotmail.com");
-
-        Person hans = new Person(2, "Hans Nielsen");
-        hans.setEmail("hnisdf@easv.dk");
-
-        pm.addPerson(piotr);
-        pm.addPerson(pete);
-        pm.addPerson(hans);
-*/
-
-        System.out.println( "ID\t\t\t\t" + "NAME\t\t\t\t" + "EMAIL");
-
+    public void fillMockData(PersonManager pm){
 
 
         Teacher t1000 = new Teacher(1000, "Svend Swillo", "ss");
@@ -52,6 +33,11 @@ public class Test {
 
         pm.addPerson(per);
         pm.addPerson(brian);
+    }
+
+    public void printTests(PersonManager pm){
+
+        System.out.println( "ID\t\t\t\t" + "NAME\t\t\t\t" + "EMAIL");
 
         System.out.println("All persons:");
         for(Person p : pm.getAllPersons()){
