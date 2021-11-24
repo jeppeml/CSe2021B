@@ -16,18 +16,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // Configuring the connection
         SQLServerDataSource ds = new SQLServerDataSource();
-        ds.setDatabaseName("testing");
+        ds.setDatabaseName("testing_no_sus");
         ds.setUser("CSe21B_39");
         ds.setPassword("CSe21B_39");
         ds.setPortNumber(1433);
         ds.setServerName("10.176.111.31");
 
-        //migrateMovies(ds);
-        //migrateUsers(ds);
+        migrateMovies(ds);
+        migrateUsers(ds);
         long start = System.currentTimeMillis();
         System.out.println("Starting...");
         migrateRatings(ds);
-        System.out.println("Time taken: " + (System.currentTimeMillis()-start));
+        System.out.println("Time taken: " + ((System.currentTimeMillis()-start)/1000d) + "s");
     }
     private static void migrateRatings(SQLServerDataSource ds){
         List<String> movies = null;
@@ -37,8 +37,13 @@ public class Main {
             e.printStackTrace();
         }//movie user rating
         try (Connection con = ds.getConnection()) {
-            String sql = "INSERT INTO Users (MovieId, UserId, Rating) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Ratings (MovieId, UserId, Rating) VALUES (?, ?, ?)";
             PreparedStatement st = con.prepareStatement(sql);
+            con.setAutoCommit(false); // should improve performance, but I am sceptical
+            System.out.println("Starting to add batch");
+            int rowsBetweenCommits = 200_000;
+            int count =0;
+            int sumCount=0;
             for (String s : movies) {
                 String[] values = s.split(",");
                 int movieId = Integer.parseInt(values[0]);
@@ -49,8 +54,26 @@ public class Main {
                 st.setInt(2, userId);
                 st.setInt(3, rating);
                 st.addBatch();
+                count++;
+                if(count == rowsBetweenCommits){
+                    long startCommit = System.currentTimeMillis();
+                    System.out.println("Executing next batch of : " + rowsBetweenCommits + " rows (so far before this: " + sumCount+ "/"+movies.size()+")");
+                    sumCount+=rowsBetweenCommits;
+                    st.executeBatch();
+                    System.out.println("Finished executing batch. Committing");
+                    con.commit(); // needed because autocommit = false
+                    System.out.println("Time taken: " + ((System.currentTimeMillis()-startCommit)/1000d) + "s");
+                    System.out.println("Continuing...");
+                    count = 0;
+
+                }
             }
+            System.out.println("Executing last batch");
             st.executeBatch();
+            System.out.println("Finished executing last batch. Committing");
+            con.commit(); // needed because autocommit = false
+            con.setAutoCommit(true);
+            System.out.println("All done...");
 
         } catch (SQLException e) {
             e.printStackTrace();
