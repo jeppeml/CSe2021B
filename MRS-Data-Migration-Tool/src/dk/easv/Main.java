@@ -24,6 +24,18 @@ public class Main {
 
         List<String> movies = Files.readAllLines(Path.of("data/movie_titles.txt"));
         System.out.println("Movies: " + movies.size());
+        for(String s : movies){
+            String[] values = s.split(",");
+            int id = Integer.parseInt(values[0]);
+            String title = values[2];
+            int year = Integer.parseInt(values[1]);
+            String sql = "INSERT INTO Movies (Id, Title, Year) VALUES ("+
+                    id + ", '" +
+                    title + "', " +
+                    year + ");";
+
+            System.out.println(sql);
+        }
 /*
         try (Connection con = ds.getConnection()) {
             String sql = "INSERT INTO Movies (Id, Title, Year) VALUES (2, 'million', 2013)";
