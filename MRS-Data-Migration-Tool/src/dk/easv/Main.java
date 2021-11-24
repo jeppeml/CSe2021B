@@ -34,17 +34,13 @@ public class Main {
                     title + "', " +
                     year + ");";
 
-            System.out.println(sql);
+            try (Connection con = ds.getConnection()) {
+                PreparedStatement st = con.prepareStatement(sql);
+                int affected = st.executeUpdate();
+                System.out.println("Affected rows: " + affected);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-/*
-        try (Connection con = ds.getConnection()) {
-            String sql = "INSERT INTO Movies (Id, Title, Year) VALUES (2, 'million', 2013)";
-            PreparedStatement st = con.prepareStatement(sql);
-            int affected = st.executeUpdate();
-            System.out.println("Affected rows: " + affected);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-*/
     }
 }
