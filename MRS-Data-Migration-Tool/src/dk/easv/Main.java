@@ -94,15 +94,21 @@ public class Main {
             PreparedStatement st = con.prepareStatement(sql);
             for (String s : movies) {
                 String[] values = s.split(",");
-                int id = Integer.parseInt(values[0]);
-                String title = values[2];
-                int year = Integer.parseInt(values[1]);
-                //System.out.println("input: " + s);
+                try {
+                    int id = Integer.parseInt(values[0]);
+                    String title = values[2];
+                    int year = Integer.parseInt(values[1]);
+                    //System.out.println("input: " + s);
 
-                st.setInt(1, id);
-                st.setString(2, title);
-                st.setInt(3, year);
-                st.addBatch();
+                    st.setInt(1, id);
+                    st.setString(2, title);
+                    st.setInt(3, year);
+                    st.addBatch();
+                }
+                catch(NumberFormatException nfe){
+
+                }
+
             }
             st.executeBatch();
 
