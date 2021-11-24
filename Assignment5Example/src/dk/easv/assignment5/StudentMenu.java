@@ -3,9 +3,10 @@ package dk.easv.assignment5;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class StudentMenu extends Menu{
     private PersonManager pm;
-    
+
     public StudentMenu(PersonManager pm) {
         super("Student Menu",
                 "Add student",
@@ -13,6 +14,7 @@ public class StudentMenu extends Menu{
                 "See student informaion",
                 "Show all students");
         this.pm=pm;
+        GO("go")
     }
 
     @Override
