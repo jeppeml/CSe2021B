@@ -22,13 +22,52 @@ public class Main {
         ds.setPortNumber(1433);
         ds.setServerName("10.176.111.31");
 
+        // Deletes the tables and recreates them
+        removeTablesAndRecreate(ds);
+
         migrateMovies(ds);
         migrateUsers(ds);
+
         long start = System.currentTimeMillis();
-        System.out.println("Starting...");
+        System.out.println("Starting migration of ratings...");
         migrateRatings(ds);
         System.out.println("Time taken: " + ((System.currentTimeMillis()-start)/1000d) + "s");
+
     }
+
+    private static void removeTablesAndRecreate(SQLServerDataSource ds){
+        try (Connection con = ds.getConnection()) {
+            String sql =
+                    "DROP TABLE Ratings;\n" +
+                    "DROP TABLE Movies;\n" +
+                    "DROP TABLE Users;\n" +
+                    "CREATE TABLE Movies(\n" +
+                    "    Id int PRIMARY KEY,\n" +
+                    "    Title VARCHAR(1000),\n" +
+                    "    Year int\n" +
+                    ");\n" +
+                    "CREATE TABLE Ratings(\n" +
+                    "    MovieId int,\n" +
+                    "    UserId int,\n" +
+                    "    Rating int\n" +
+                    ");\n" +
+                    "CREATE TABLE Users(\n" +
+                    "    Id int PRIMARY KEY,\n" +
+                    "    [Name] VARCHAR(1000)\n" +
+                    ");\n" +
+                    "ALTER TABLE Ratings\n" +
+                    "ADD FOREIGN KEY (MovieId) REFERENCES Movies(id);\n" +
+                    "\n" +
+                    "ALTER TABLE Ratings\n" +
+                    "ADD FOREIGN KEY (UserId) REFERENCES Users(id);";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private static void migrateRatings(SQLServerDataSource ds){
         List<String> movies = null;
         try {
